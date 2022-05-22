@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import {messages} from '../../validations/messages';
 import Label from '../../components/atoms/Label';
@@ -8,20 +8,21 @@ import IconButton from '../../components/atoms/Button/Icon';
 import TextInput from '../../components/atoms/Input';
 import {View} from 'react-native';
 
+import {COLORS} from '../../common';
+
+import {Picker} from '@react-native-picker/picker';
+
 import * as yup from 'yup';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {useForm} from 'react-hook-form';
 
+import ContainerAccountQuestion from '../../components/molecules/ContainerQuestionAccount';
+import {ScrollView} from 'react-native-gesture-handler';
+
 const schema = yup
   .object({
     name: yup.string(),
-    cpf: yup
-      .string()
-      .required(messages.required)
-      .matches(
-        /^([0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}|[0-9]{2}\.?[0-9]{3}\.?[0-9]{3}\/?[0-9]{4}\-?[0-9]{2})$/,
-        'Informe um CPF valido',
-      ),
+    cpf: yup.string().required(messages.required),
     password: yup
       .string()
       .min(6, messages.min6)
@@ -39,6 +40,11 @@ const schema = yup
   })
   .required();
 
+const usersTypes = [
+  {label: 'Cliente', value: 'cliente'},
+  {label: 'Empresa', value: 'empresa'},
+];
+
 function SignIn({navigation}) {
   const {
     setValue,
@@ -49,6 +55,14 @@ function SignIn({navigation}) {
     resolver: yupResolver(schema),
   });
 
+  const [selectedValue, setSelectedValue] = useState('cliente');
+
+  const onSubmit = () => {
+    if (selectedValue === 'cliente') {
+    } else {
+    }
+  };
+
   useEffect(() => {
     register('name');
     register('cpf');
@@ -56,64 +70,96 @@ function SignIn({navigation}) {
     register('passwordConfirmation');
   }, [register]);
 
+  const ListStatusOrders = usersTypes.map(status => {
+    return <Picker.Item label={status.label} value={status.value} />;
+  });
+
   return (
-    <Container justify="center" align="center" padding={30}>
-      <StyledContainer direction="row" align="center">
-        <IconButton
-          height={21}
-          icon="arrow-left-green"
-          onPress={() => {
-            navigation.navigate('SignIn');
-          }}
+    <ScrollView>
+      <Container align="center" padding={24}>
+        <StyledContainer direction="row" align="center">
+          <IconButton
+            height={21}
+            icon="arrow-left-green"
+            onPress={() => {
+              navigation.navigate('SignIn');
+            }}
+          />
+          <Label color="purple-800">Criar conta</Label>
+        </StyledContainer>
+
+        <StyledContainer>
+          <Label color="gray-500" variant="body4">
+            Tipo de usuário
+          </Label>
+          <Picker
+            selectedValue={selectedValue}
+            style={{
+              height: 34,
+              width: '100%',
+              backgroundColor: COLORS['white-100'],
+              borderRadius: 8,
+            }}
+            onValueChange={(itemValue, itemIndex) =>
+              setSelectedValue(itemValue)
+            }>
+            {ListStatusOrders}
+          </Picker>
+        </StyledContainer>
+
+        <View style={{padding: 12}} />
+
+        <TextInput
+          label="Usuário"
+          placeholder="Ex: marcosmacedo"
+          onChangeText={text => setValue('name', text)}
+          error={errors?.name}
         />
-        <View style={{padding: 8}} />
-        <Label color="green-dark">Criar conta</Label>
-      </StyledContainer>
 
-      <View style={{padding: 30}} />
+        <View style={{padding: 6}} />
 
-      <TextInput
-        label="Nome completo"
-        onChangeText={text => setValue('name', text)}
-        error={errors?.name}
-      />
+        <TextInput
+          label="Email"
+          placeholder="Ex: marcos@gmail.com"
+          onChangeText={text => setValue('cpf', text)}
+          error={errors?.cpf}
+        />
 
-      <View style={{padding: 6}} />
+        <View style={{padding: 6}} />
 
-      <TextInput
-        label="CPF (Somente números)"
-        onChangeText={text => setValue('cpf', text)}
-        error={errors?.cpf}
-      />
+        <TextInput
+          label="SENHA"
+          placeholder="Informe sua senha"
+          secureTextEntry={true}
+          onChangeText={text => setValue('password', text)}
+          error={errors?.password}
+        />
 
-      <View style={{padding: 6}} />
+        <View style={{padding: 6}} />
 
-      <TextInput
-        label="SENHA"
-        secureTextEntry={true}
-        onChangeText={text => setValue('password', text)}
-        error={errors?.password}
-      />
+        <TextInput
+          label="CONFIRMAR SENHA"
+          placeholder="Confirme sua senha "
+          secureTextEntry={true}
+          onChangeText={text => setValue('passwordConfirmation', text)}
+          error={errors?.passwordConfirmation}
+        />
 
-      <View style={{padding: 6}} />
+        <Button
+          name="Exemple"
+          onPress={handleSubmit(data => {
+            console.log(data);
+          })}>
+          Criar
+        </Button>
 
-      <TextInput
-        label="CONFIRMAR SENHA"
-        secureTextEntry={true}
-        onChangeText={text => setValue('passwordConfirmation', text)}
-        error={errors?.passwordConfirmation}
-      />
-
-      <View style={{padding: 22}} />
-
-      <Button
-        name="Exemple"
-        onPress={handleSubmit(data => {
-          console.log(data);
-        })}>
-        Criar
-      </Button>
-    </Container>
+        <ContainerAccountQuestion
+          navigation={navigation}
+          question="Já possui uma conta?"
+          text="Faça login"
+        />
+      </Container>
+    </ScrollView>
   );
 }
 

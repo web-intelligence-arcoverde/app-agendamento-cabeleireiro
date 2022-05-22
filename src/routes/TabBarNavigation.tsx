@@ -8,7 +8,6 @@ import TabBarIcon from '../components/atoms/TabBottomIconNavigation';
 import {COLORS} from '../common';
 
 import Dashboard from '../screens/Dashboard';
-import Tariff from '../screens/Tariff';
 import PurchasePass from '../screens/PurchasePass';
 import SignOut from '../screens/SignOut';
 
@@ -33,14 +32,6 @@ const TabBarNavigation = () => {
         component={Dashboard}
         options={{
           tabBarIcon: () => <TabBarIcon icon="home-icon" label="Home" />,
-        }}
-      />
-
-      <Tab.Screen
-        name="Tarifas"
-        component={Tariff}
-        options={{
-          tabBarIcon: () => <TabBarIcon icon="tariff-icon" label="tarifas" />,
         }}
       />
 

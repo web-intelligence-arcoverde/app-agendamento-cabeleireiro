@@ -32,7 +32,7 @@ export const Container = styled.KeyboardAvoidingView<ContainerProps>`
   flex: 1;
   flex-direction: column;
   background-color: ${({color}) =>
-    color ? `${COLORS[color]}` : COLORS['white-default']};
+    color ? `${COLORS[color]}` : COLORS['white-200']};
   justify-content: ${({justify}) => (justify ? justify : 'flex-start')};
   align-items: ${({align}) => (align ? align : 'flex-start')};
 

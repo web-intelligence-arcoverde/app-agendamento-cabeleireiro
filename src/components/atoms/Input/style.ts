@@ -9,12 +9,12 @@ export const Container = styled.View`
 `;
 
 export const Label = styled.Text`
-  font-family: 'DMSans-Regular';
   font-style: normal;
   font-weight: 500;
-  font-size: 13px;
-  line-height: 17px;
-  text-transform: uppercase;
+  font-size: 16px;
+  line-height: 18px;
+  color: #323133;
+  text-transform: capitalize;
   color: ${COLORS['gray-500']};
 `;
 
@@ -26,10 +26,10 @@ export const InputContainer = styled.View`
   align-items: center;
   width: 100%;
   height: 52px;
-  background: ${COLORS['white-light']};
+  background: ${COLORS['white-100']};
 
   border-color: ${({borderColor}) =>
-    borderColor ? `${COLORS[borderColor]}` : `${COLORS['white-dark']}`};
+    borderColor ? `${COLORS[borderColor]}` : `transparent`};
   border-style: solid;
   border-width: ${({borderWidth}) =>
     borderWidth ? `${borderWidth}px` : `1px`};

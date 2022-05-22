@@ -18,15 +18,15 @@ export const Button = styled.TouchableOpacity<PropsButton>`
   border-width: 1px;
 
   border-color: ${({borderColor}) =>
-    borderColor ? `${COLORS[borderColor]}` : `${COLORS['red-default']}`};
+    borderColor ? `${COLORS[borderColor]}` : `${COLORS['purple-500']}`};
 `;
 
 export const ButtonText = styled.Text`
   font-family: Roboto;
   font-style: normal;
   font-weight: bold;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 18px;
   color: ${({color}) =>
-    color ? `${COLORS[color]}` : `${COLORS['red-default']}`};
+    color ? `${COLORS[color]}` : `${COLORS['purple-500']}`};
 `;

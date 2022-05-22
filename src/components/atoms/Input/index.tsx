@@ -19,8 +19,8 @@ const Index = ({
 
   const borderInput = {
     error: {borderColor: 'red-default', borderWidth: 2},
-    success: {borderColor: 'green-default', borderWidth: 2},
-    default: {borderColor: 'white-dark', borderWidth: 1},
+    success: {borderColor: 'white-100', borderWidth: 1},
+    default: {borderColor: 'white-100', borderWidth: 1},
   };
 
   const {borderColor, borderWidth} =
@@ -56,13 +56,7 @@ const Index = ({
         )}
         {secureTextEntry && (
           <Icon
-            icon={
-              visiblePasswordText
-                ? 'eye-close'
-                : !!error
-                ? 'eye-open-error'
-                : 'eye-open'
-            }
+            icon={visiblePasswordText ? 'eye-close' : 'eye-open'}
             onPress={() => setVisiblePasswordText(!visiblePasswordText)}
           />
         )}
