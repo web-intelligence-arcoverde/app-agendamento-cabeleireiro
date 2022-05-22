@@ -19,8 +19,8 @@ export const Label = styled.Text`
 `;
 
 export const InputContainer = styled.View`
-  margin-top: 4px;
-  margin-bottom: 6px;
+  margin-top: 8px;
+  margin-bottom: 12px;
   display: flex;
   flex-direction: row;
   align-items: center;
