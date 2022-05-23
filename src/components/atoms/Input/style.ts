@@ -14,7 +14,7 @@ export const Label = styled.Text`
   font-size: 16px;
   line-height: 18px;
   color: #323133;
-  text-transform: capitalize;
+  text-transform: none;
   color: ${COLORS['gray-500']};
 `;
 

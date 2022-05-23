@@ -5,7 +5,7 @@ import {StyledContainer} from '../../atoms/Container';
 import Label from '../../atoms/Label';
 import {ButtonText} from '../../atoms/Button/Contained/style';
 
-const QuestionAccount = ({navigation, question, text}) => {
+const QuestionAccount = ({navigation, question, text, router}) => {
   return (
     <StyledContainer align="center">
       <Label color="gray-300" variant="body1">
@@ -16,7 +16,7 @@ const QuestionAccount = ({navigation, question, text}) => {
 
       <ButtonText
         color="purple-400"
-        onPress={() => navigation.navigate('SignUp')}>
+        onPress={() => navigation.navigate(router)}>
         {text}
       </ButtonText>
     </StyledContainer>

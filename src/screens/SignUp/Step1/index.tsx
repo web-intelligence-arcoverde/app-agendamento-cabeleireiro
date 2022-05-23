@@ -1,118 +1,62 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 
-import {messages} from '../../../validations/messages';
+import ContainerAccountQuestion from '../../../components/molecules/ContainerQuestionAccount';
 import Label from '../../../components/atoms/Label';
 import {Container, StyledContainer} from '../../../components/atoms/Container';
 import Button from '../../../components/atoms/Button/Contained';
 import IconButton from '../../../components/atoms/Button/Icon';
-import TextInput from '../../../components/atoms/Input';
-import {View} from 'react-native';
+import Select from '../../../components/atoms/Select';
 
-import {COLORS} from '../../../common';
-
-import {Picker} from '@react-native-picker/picker';
-
-import * as yup from 'yup';
-import {yupResolver} from '@hookform/resolvers/yup';
-import {useForm} from 'react-hook-form';
-
-import ContainerAccountQuestion from '../../../components/molecules/ContainerQuestionAccount';
-import {ScrollView} from 'react-native-gesture-handler';
-
-const schema = yup
-  .object({
-    name: yup.string(),
-    cpf: yup.string().required(messages.required),
-    password: yup
-      .string()
-      .min(6, messages.min6)
-      .max(20, messages.max20)
-      .required(messages.required),
-    passwordConfirmation: yup
-      .string()
-      .test(
-        'passwords-match',
-        'As senhas devem se corresponder',
-        function (value) {
-          return this.parent.password === value;
-        },
-      ),
-  })
-  .required();
+import Separator from '../../../components/atoms/Separator';
 
 const usersTypes = [
   {label: 'Cliente', value: 'cliente'},
   {label: 'Empresa', value: 'empresa'},
 ];
 
-const SelecteUserType = () => {
-  const {
-    setValue,
-    handleSubmit,
-    register,
-    formState: {errors},
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
-
-  const [selectedValue, setSelectedValue] = useState('cliente');
-
-  const onSubmit = () => {
-    if (selectedValue === 'cliente') {
-    } else {
-    }
-  };
-
-  useEffect(() => {
-    register('name');
-    register('cpf');
-    register('password');
-    register('passwordConfirmation');
-  }, [register]);
-
-  const ListStatusOrders = usersTypes.map(status => {
-    return <Picker.Item label={status.label} value={status.value} />;
-  });
+const SelecteUserType = ({navigation}) => {
+  const [userType, setUserType] = useState('');
 
   return (
     <Container padding={24} justify="center">
       <StyledContainer direction="row" align="center">
-        <IconButton height={21} icon="arrow-left-green" onPress={() => {}} />
+        <IconButton
+          height={21}
+          icon="arrow-left-green"
+          onPress={() => navigation.goBack()}
+        />
+        <Separator width={12} />
         <Label color="purple-800">Criar conta</Label>
       </StyledContainer>
 
-      <Label color="gray-300" variant="body2">
-        Aqui vamos informar o tipo de usuário que vamos criar
+      <Separator width={22} />
+
+      <Label color="gray-300" variant="body1">
+        Precisaremos de alguns dados seus. Não vai durar dois minutos.
       </Label>
 
-      <StyledContainer>
-        <Label color="gray-500" variant="body4">
-          Tipo de usuário
-        </Label>
-        <Picker
-          selectedValue={selectedValue}
-          style={{
-            height: 34,
-            width: '100%',
-            backgroundColor: COLORS['white-100'],
-            borderRadius: 8,
-          }}
-          onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}>
-          {ListStatusOrders}
-        </Picker>
-      </StyledContainer>
+      <Separator width={12} />
 
-      <View style={{padding: 12}} />
+      <Select
+        text="Tipo de usuário"
+        options={usersTypes}
+        value={userType}
+        setValue={setUserType}
+      />
+
+      <Separator width={12} />
 
       <Button
         name="Exemple"
-        onPress={handleSubmit(data => {
-          console.log(data);
-        })}>
+        onPress={() => navigation.navigate('SignUpStep2', {userType})}>
         Proximo
       </Button>
 
+      <Separator width={48} />
+
       <ContainerAccountQuestion
+        navigation={navigation}
+        router="SignIn"
         question="Já possui uma conta?"
         text="Faça login"
       />

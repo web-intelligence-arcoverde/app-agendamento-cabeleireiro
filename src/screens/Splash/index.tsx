@@ -8,10 +8,6 @@ import ButtonOutiline from '../../components/atoms/Button/Outiline';
 import Separator from '../../components/atoms/Separator';
 
 const Splash = ({navigation}: any) => {
-  function Loading() {
-    navigation.navigate('SignIn');
-  }
-
   return (
     <Container justify="center" align="center" padding={24}>
       <Label color="purble-900">2Beauty</Label>
@@ -20,7 +16,7 @@ const Splash = ({navigation}: any) => {
         Agende seu horário de qualquer lugar
       </Label>
       <Separator width={112} />
-      <ButtonContained onPress={() => navigation.navigate('SignUp')}>
+      <ButtonContained onPress={() => navigation.navigate('SignUpStep1')}>
         Criar conta
       </ButtonContained>
       <Separator width={12} />

@@ -1,21 +1,20 @@
-import React from 'react';
-import {ScrollView} from 'react-native';
+import React, {Children, useState} from 'react';
 
 import Swiper from 'react-native-swiper';
 
 import SelecteUserType from './Step1';
 import BasicInformationUser from './Step2';
 import IntroEnterpriseInformation from './Step3';
-import BasicInformationsEnterprise from './Step4';
-import ScheduleInformation from './Step5';
+import ScheduleInformation from './Step4';
 
 const SwiperComponent = () => {
+  const [userType, setUserType] = useState('');
+
   return (
     <Swiper loop={false}>
-      <SelecteUserType />
-      <BasicInformationUser />
+      <SelecteUserType setUserType={setUserType} userType={userType} />
+      <BasicInformationUser userType={userType} />
       <IntroEnterpriseInformation />
-      <BasicInformationsEnterprise />
       <ScheduleInformation />
     </Swiper>
   );

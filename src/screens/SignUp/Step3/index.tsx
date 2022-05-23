@@ -5,13 +5,13 @@ import Label from '../../../components/atoms/Label';
 import {Container, StyledContainer} from '../../../components/atoms/Container';
 
 import TextInput from '../../../components/atoms/Input';
-import {View} from 'react-native';
 
 import Button from '../../../components/atoms/Button/Contained';
 
 import * as yup from 'yup';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {useForm} from 'react-hook-form';
+import Separator from '../../../components/atoms/Separator';
 
 const schema = yup
   .object({
@@ -34,7 +34,7 @@ const schema = yup
   })
   .required();
 
-const IntroEnterpriseInformation = () => {
+const IntroEnterpriseInformation = ({navigation, route}) => {
   const {
     setValue,
     handleSubmit,
@@ -48,17 +48,43 @@ const IntroEnterpriseInformation = () => {
     <Container align="center" padding={24} justify="center">
       <StyledContainer>
         <Label color="purple-800">Vamos criar seu negócio</Label>
-        <Label color="gray-300" variant="body2">
-          Precisaremos de alguns dados seus. Não vai durar dois minutos.
+        <Separator width={4} />
+        <Label color="gray-300" variant="body1">
+          Precisaremos de alguns dados do estabelecimento.
         </Label>
       </StyledContainer>
 
-      <Button
-        name="Exemple"
-        onPress={handleSubmit(data => {
-          console.log(data);
-        })}>
-        Vamos lá
+      <Separator width={22} />
+
+      <TextInput
+        label="Nome da sua empresa"
+        placeholder="Ex: Barbearia Alves"
+        onChangeText={text => setValue('name', text)}
+        error={errors?.name}
+      />
+
+      <Separator width={8} />
+
+      <TextInput
+        label="CNPJ"
+        placeholder="Ex: xx.xxx.xxx/xxxx-xx"
+        onChangeText={text => setValue('cpf', text)}
+        error={errors?.cpf}
+      />
+
+      <Separator width={8} />
+
+      <TextInput
+        label="Telefone"
+        placeholder="Ex: (86)9995028103"
+        onChangeText={text => setValue('password', text)}
+        error={errors?.password}
+      />
+
+      <Separator width={8} />
+
+      <Button name="Exemple" onPress={() => navigation.navigate('SignUpStep4')}>
+        Proximo
       </Button>
     </Container>
   );

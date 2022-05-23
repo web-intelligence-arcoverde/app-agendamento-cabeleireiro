@@ -5,7 +5,6 @@ import Label from '../../../components/atoms/Label';
 import {Container, StyledContainer} from '../../../components/atoms/Container';
 
 import TextInput from '../../../components/atoms/Input';
-import {View} from 'react-native';
 
 import Button from '../../../components/atoms/Button/Contained';
 
@@ -13,28 +12,16 @@ import * as yup from 'yup';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {useForm} from 'react-hook-form';
 
+import IconButton from '../../../components/atoms/Button/Icon';
+import Separator from '../../../components/atoms/Separator';
+
 const schema = yup
   .object({
     name: yup.string(),
-    cpf: yup.string().required(messages.required),
-    password: yup
-      .string()
-      .min(6, messages.min6)
-      .max(20, messages.max20)
-      .required(messages.required),
-    passwordConfirmation: yup
-      .string()
-      .test(
-        'passwords-match',
-        'As senhas devem se corresponder',
-        function (value) {
-          return this.parent.password === value;
-        },
-      ),
   })
   .required();
 
-const BasicInformationsUser = () => {
+const BasicInformationsUser = ({navigation, route}: any) => {
   const {
     setValue,
     handleSubmit,
@@ -44,57 +31,65 @@ const BasicInformationsUser = () => {
     resolver: yupResolver(schema),
   });
 
+  const {userType} = route.params;
+
+  const selectedUserType = ({data}) => {
+    if (userType === 'empresa') {
+      navigation.navigate('SignUpStep3', {data, userType});
+    } else {
+      navigation.navigate('SignIn');
+    }
+  };
+
   return (
-    <Container align="center" padding={24} justify="center">
-      <StyledContainer>
-        <Label color="purple-800">Criar conta</Label>
-        <Label color="gray-300" variant="body2">
-          Insira as informações básicas do usuário
-        </Label>
+    <Container padding={24} justify="center">
+      <StyledContainer direction="row" align="center">
+        <IconButton
+          height={21}
+          icon="arrow-left-green"
+          onPress={() => navigation.goBack()}
+        />
+        <Separator width={12} />
+        <Label color="purple-800">Informações básicas</Label>
       </StyledContainer>
+
+      <Separator width={22} />
 
       <TextInput
         label="Usuário"
         placeholder="Ex: marcosmacedo"
         onChangeText={text => setValue('name', text)}
-        error={errors?.name}
       />
 
-      <View style={{padding: 6}} />
+      <Separator width={10} />
 
       <TextInput
         label="Email"
         placeholder="Ex: marcos@gmail.com"
         onChangeText={text => setValue('cpf', text)}
-        error={errors?.cpf}
       />
 
-      <View style={{padding: 6}} />
+      <Separator width={10} />
 
       <TextInput
-        label="SENHA"
+        label="Senha"
         placeholder="Informe sua senha"
         secureTextEntry={true}
         onChangeText={text => setValue('password', text)}
-        error={errors?.password}
       />
 
-      <View style={{padding: 6}} />
-
+      <Separator width={10} />
       <TextInput
-        label="CONFIRMAR SENHA"
+        label="Confirme a senha"
         placeholder="Confirme sua senha "
         secureTextEntry={true}
         onChangeText={text => setValue('passwordConfirmation', text)}
-        error={errors?.passwordConfirmation}
       />
 
-      <Button
-        name="Exemple"
-        onPress={handleSubmit(data => {
-          console.log(data);
-        })}>
-        Proximo
+      <Separator width={20} />
+
+      <Button name="Exemple" onPress={() => navigation.navigate('SignUpStep3')}>
+        {userType === 'cliente' ? 'Criar conta' : 'Proximo'}
       </Button>
     </Container>
   );
