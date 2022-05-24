@@ -39,8 +39,8 @@ export default function SuccessCreateSchedule({navigation}) {
           flex: 0.42,
           backgroundColor: COLORS['white-100'],
           alignItems: 'center',
-          borderTopLeftRadius: 32,
-          borderTopRightRadius: 32,
+          borderTopLeftRadius: 16,
+          borderTopRightRadius: 16,
           padding: 30,
         }}>
         <View

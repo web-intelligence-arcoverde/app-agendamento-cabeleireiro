@@ -58,10 +58,13 @@ const Schedule = ({navigation, route}: any) => {
         <Separator width={6} />
 
         <ScrollView horizontal={true}>
-          {[1, 2, 3, 4, 5, 6, 7, 8].map(() => {
+          {[1, 2, 3, 4, 5, 6, 7, 8].map(index => {
             return (
               <>
-                <ScheduleItem />
+                <ScheduleItem
+                  onPress={() => setDateSelected({id: index})}
+                  selected={dateSelected.id === index}
+                />
                 <Separator width={8} />
               </>
             );
@@ -79,10 +82,13 @@ const Schedule = ({navigation, route}: any) => {
         <Separator width={6} />
 
         <ScrollView horizontal={true}>
-          {[1, 2, 3, 4, 5, 6, 7, 8].map(() => {
+          {[1, 2, 3, 4, 5, 6, 7, 8].map(index => {
             return (
               <>
-                <ScheduleItem />
+                <ScheduleItem
+                  onPress={() => setHourSelected({id: index})}
+                  selected={hourSelected.id === index}
+                />
                 <Separator width={8} />
               </>
             );

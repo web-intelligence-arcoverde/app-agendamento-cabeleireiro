@@ -6,11 +6,10 @@ import Separator from '../Separator';
 
 import {TouchableOpacity} from 'react-native';
 
-const ScheduleItem = ({shift, schedule}) => {
-  const [selected, setSelected] = useState(false);
+const ScheduleItem = ({shift, schedule, onPress, selected}) => {
   return (
     <TouchableOpacity
-      onPress={() => setSelected(!selected)}
+      onPress={() => onPress()}
       style={{
         borderRadius: 14,
         backgroundColor: selected ? COLORS['purple-100'] : COLORS['white-300'],
