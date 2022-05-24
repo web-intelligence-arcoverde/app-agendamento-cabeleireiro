@@ -104,7 +104,7 @@ const ScheduleInformation = ({navigation, route}) => {
 
         <Separator width={8} />
 
-        <Button name="Exemple" onPress={() => {}}>
+        <Button name="Exemple" onPress={() => navigation.navigate('SignIn')}>
           Criar negócio
         </Button>
       </Container>

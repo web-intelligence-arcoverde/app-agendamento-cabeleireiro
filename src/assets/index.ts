@@ -22,7 +22,19 @@ import CancelPayment from './icons/cancel_payment.svg';
 
 import CreditCard from './icons/payment.svg';
 
+import HairDryer from './icons/hair-dryer-icon.svg';
+
+import AlarmLock from './icons/alarm-clock.svg';
+import LocalPoint from './icons/local-two.svg';
+import PhoneIcon from './icons/phone-icon.svg';
+import SuccessIcon from './icons/success.svg';
+
 export const Icons = {
+  'success-icon': SuccessIcon,
+  'phone-icon': PhoneIcon,
+  'alarm-clock': AlarmLock,
+  'local-point': LocalPoint,
+  'hair-dryer': HairDryer,
   'arrow-left': ArrowLeft,
   'arrow-right': ArrowRight,
   'ticket-icon': Ticket,

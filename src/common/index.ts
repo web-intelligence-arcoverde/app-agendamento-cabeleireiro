@@ -77,6 +77,13 @@ export const Typography = {
     lineHeight: '17.2px',
   },
 
+  body5: {
+    fontFamily: 'DMSans-Medium',
+    fontSize: '14px',
+    fontWight: 500,
+    lineHeight: '21px',
+  },
+
   schedule: {
     fontFamily: 'DMSans-Medium',
     fontSize: '20px',

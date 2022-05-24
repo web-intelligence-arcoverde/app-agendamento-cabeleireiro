@@ -13,6 +13,8 @@ import * as yup from 'yup';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {useForm} from 'react-hook-form';
 
+import ContainerAccountQuestion from '../../components/molecules/ContainerQuestionAccount';
+
 const schema = yup
   .object({
     cpf: yup.string().required(messages.required),
@@ -42,24 +44,20 @@ const SignIn = ({navigation}: any) => {
 
   return (
     <Container justify="center" align="center" padding={30}>
-      <Label color="green-dark">RecargaBuss</Label>
+      <Label color="purple-800">2Beauty</Label>
 
       <View style={{padding: 26}} />
 
       <TextInput
-        label="CPF (Somente números)"
+        label="Usuario"
         onChangeText={text => setValue('cpf', text)}
         error={errors?.cpf}
-        keyboardType="numeric"
-        maxLength={11}
-        mask
-        type="cpf"
       />
 
       <View style={{padding: 4}} />
 
       <TextInput
-        label="SENHA"
+        label="Senha"
         secureTextEntry={true}
         onChangeText={text => setValue('password', text)}
         error={errors?.password}
@@ -68,36 +66,25 @@ const SignIn = ({navigation}: any) => {
       <View style={{padding: 4}} />
 
       <StyledContainer align="flex-end">
-        <ButtonText onPress={() => navigation.navigate('Recovery')}>
+        <ButtonText
+          onPress={() => navigation.navigate('Recovery')}
+          color="gray-300">
           Esqueceu a senha?
         </ButtonText>
       </StyledContainer>
 
       <View style={{padding: 8}} />
 
-      <Button
-        onPress={handleSubmit(data => {
-          console.log(data);
-          navigation.navigate('Dashboard');
-        })}>
-        Entrar
-      </Button>
+      <Button onPress={() => navigation.navigate('Dashboard')}>Entrar</Button>
 
       <View style={{padding: 8}} />
 
-      <StyledContainer align="center">
-        <Label color="gray-400" variant="body1">
-          Ainda não possui uma conta?
-        </Label>
-
-        <View style={{padding: 6}} />
-
-        <ButtonText
-          color="green-default"
-          onPress={() => navigation.navigate('SignUp')}>
-          Crie uma agora
-        </ButtonText>
-      </StyledContainer>
+      <ContainerAccountQuestion
+        navigation={navigation}
+        question="Já possui uma conta?"
+        text="Faça login"
+        router="SignUpStep1"
+      />
     </Container>
   );
 };

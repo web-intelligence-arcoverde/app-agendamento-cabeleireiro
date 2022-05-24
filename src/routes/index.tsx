@@ -11,11 +11,20 @@ import SignUpStep2 from '../screens/SignUp/Step2';
 import SignUpStep3 from '../screens/SignUp/Step3';
 import SignUpStep4 from '../screens/SignUp/Step4';
 
+import Details from '../screens/Details';
+import Schedule from '../screens/Schedule';
+import SuccessCreateSchedule from '../screens/SuccessCreateSchedule';
+
 import DashboardTabBarNavigation from './TabBarNavigation';
+
+import {openModalSignOut} from '../store/modules/navigation/actions';
+import {useDispatch} from 'react-redux';
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
+  const dispatch = useDispatch();
+
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -30,6 +39,20 @@ const App = () => {
         <Stack.Screen name="SignUpStep2" component={SignUpStep2} />
         <Stack.Screen name="SignUpStep3" component={SignUpStep3} />
         <Stack.Screen name="SignUpStep4" component={SignUpStep4} />
+
+        <Stack.Screen name="Details" component={Details} />
+        <Stack.Screen name="Schedule" component={Schedule} />
+
+        <Stack.Screen
+          name="SuccessCreateSchedule"
+          component={SuccessCreateSchedule}
+          listeners={({navigation}) => ({
+            tabPress: e => {
+              e.preventDefault();
+              console.log('nem eu mesmo sei');
+            },
+          })}
+        />
 
         <Stack.Screen name="Dashboard" component={DashboardTabBarNavigation} />
       </Stack.Navigator>

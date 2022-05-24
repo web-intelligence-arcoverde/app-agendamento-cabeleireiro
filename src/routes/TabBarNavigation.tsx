@@ -5,8 +5,6 @@ import {openModalSignOut} from '../store/modules/navigation/actions';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import TabBarIcon from '../components/atoms/TabBottomIconNavigation';
 
-import {COLORS} from '../common';
-
 import Dashboard from '../screens/Dashboard';
 import PurchasePass from '../screens/PurchasePass';
 import SignOut from '../screens/SignOut';
@@ -24,7 +22,7 @@ const TabBarNavigation = () => {
         tabBarShowLabel: false,
         tabBarStyle: {
           height: 64,
-          backgroundColor: COLORS['green-dark'],
+          backgroundColor: '#EBE8ED',
         },
       }}>
       <Tab.Screen
