@@ -6,11 +6,11 @@ import {StyledContainer} from '../../../components/atoms/Container';
 import Label from '../../../components/atoms/Label';
 
 const statusPayment = [
-  {label: 'Mais recentes', value: 'mais recentes'},
-  {label: 'Mais antigos', value: 'mais antigos'},
-  {label: 'Pendentes', value: 'pendentes'},
-  {label: 'Aprovados', value: 'aprovados'},
-  {label: 'Cancelados', value: 'cancelados'},
+  {label: 'Hoje', value: 'hoje'},
+  {label: 'Semana passada', value: 'semana passada'},
+  {label: 'Proxima semana', value: 'Proxima semana'},
+  {label: 'Mês passado', value: 'Mês passado'},
+  {label: 'Proximo mês', value: 'Proximo mês'},
 ];
 
 const HeaderPurchasesHistory = () => {
@@ -21,18 +21,15 @@ const HeaderPurchasesHistory = () => {
   });
   return (
     <StyledContainer direction="row" align="flex-end" justify="space-between">
-      <Label color="gray-100" variant="body2">
+      <Label color="gray-200" variant="body1">
         40 transações
       </Label>
       <Picker
         selectedValue={selectedValue}
         style={{
-          height: 38,
           width: 180,
-          backgroundColor: COLORS['white-light'],
-          borderRadius: 6,
-          borderWidth: 1,
-          borderColor: COLORS['white-dark'],
+          backgroundColor: COLORS['white-100'],
+          borderRadius: 12,
         }}
         onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}>
         {ListStatusOrders}

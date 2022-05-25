@@ -16,10 +16,14 @@ import SuccessCreateSchedule from '../SuccessCreateSchedule';
 import {createScheduleRequest} from '../../store/modules/user/actions';
 import {useDispatch} from 'react-redux';
 
+import {getTimeBlocks} from '../../util/genereteDate';
+
 const Schedule = ({navigation, route}: any) => {
   const enterpriseId = route.params;
 
   const dispatch = useDispatch();
+
+  const [getHours, setGetHours] = useState([]);
 
   const [hourSelected, setHourSelected] = useState({id: ''});
   const [dateSelected, setDateSelected] = useState({id: ''});
@@ -29,7 +33,28 @@ const Schedule = ({navigation, route}: any) => {
       'user esse id para procurar as informações da empresa',
       enterpriseId,
     );
+    setGetHours(getTimeBlocks());
   }, []);
+
+  var days = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'];
+  var d = new Date();
+  var dayName = days[d.getDay()];
+
+  const getAllDaysInMonth = (month, year) => {
+    return Array.from(
+      {length: new Date(year, month, 0).getDate()}, // get next month, zeroth's (previous) day
+      (_, i) => new Date(year, month - 1, i + 1), // get current month (0 based index)
+    );
+  };
+
+  const month = new Date().getMonth();
+  console.log(month);
+  const year = new Date().getFullYear();
+  console.log(year);
+
+  console.log(dayName);
+
+  const allDatesInOctober = getAllDaysInMonth(month + 1, year);
 
   return (
     <Container padding={24}>
@@ -48,22 +73,24 @@ const Schedule = ({navigation, route}: any) => {
         Para realizar o agendamento, escolha um dia e um horário logo abaixo.
       </Label>
 
-      <Separator width={26} />
+      <Separator width={16} />
 
       <StyledContainer>
         <Label color="gray-600" variant="h3">
-          Dias disponíveis
+          Dias disponiveis
         </Label>
 
         <Separator width={6} />
 
         <ScrollView horizontal={true}>
-          {[1, 2, 3, 4, 5, 6, 7, 8].map(index => {
+          {allDatesInOctober.map((index, key) => {
             return (
               <>
                 <ScheduleItem
-                  onPress={() => setDateSelected({id: index})}
-                  selected={dateSelected.id === index}
+                  onPress={() => setHourSelected({id: key})}
+                  selected={hourSelected.id === key}
+                  title={days[index.getDay()]}
+                  subTitle={index.getUTCDate()}
                 />
                 <Separator width={8} />
               </>
@@ -71,30 +98,9 @@ const Schedule = ({navigation, route}: any) => {
           })}
         </ScrollView>
       </StyledContainer>
+      <Separator width={16} />
 
-      <Separator width={26} />
-
-      <StyledContainer>
-        <Label color="gray-600" variant="h3">
-          Horários disponíveis
-        </Label>
-
-        <Separator width={6} />
-
-        <ScrollView horizontal={true}>
-          {[1, 2, 3, 4, 5, 6, 7, 8].map(index => {
-            return (
-              <>
-                <ScheduleItem
-                  onPress={() => setHourSelected({id: index})}
-                  selected={hourSelected.id === index}
-                />
-                <Separator width={8} />
-              </>
-            );
-          })}
-        </ScrollView>
-      </StyledContainer>
+      <AvailableTimes />
 
       <Separator width={70} />
 
@@ -104,6 +110,42 @@ const Schedule = ({navigation, route}: any) => {
 
       <SuccessCreateSchedule navigation={navigation} />
     </Container>
+  );
+};
+
+const AvailableTimes = () => {
+  const [getHours, setGetHours] = useState([]);
+  const [hourSelected, setHourSelected] = useState({id: ''});
+
+  useEffect(() => {
+    setGetHours(getTimeBlocks());
+  }, []);
+
+  return (
+    <StyledContainer>
+      <Label color="gray-600" variant="h3">
+        Horarios disponíveis
+      </Label>
+
+      <Separator width={6} />
+
+      <ScrollView horizontal={true}>
+        {getHours.map(index => {
+          return (
+            <>
+              <ScheduleItem
+                onPress={() => setHourSelected({id: index.id})}
+                selected={hourSelected.id === index.id}
+                title={'Manhã'}
+                subTitle={index.timeValue}
+                time
+              />
+              <Separator width={8} />
+            </>
+          );
+        })}
+      </ScrollView>
+    </StyledContainer>
   );
 };
 

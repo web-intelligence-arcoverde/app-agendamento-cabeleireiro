@@ -1,12 +1,11 @@
-import React, {useState} from 'react';
-import {View} from 'react-native';
+import React from 'react';
 import Label from '../Label';
 import {COLORS} from '../../../common';
 import Separator from '../Separator';
 
 import {TouchableOpacity} from 'react-native';
 
-const ScheduleItem = ({shift, schedule, onPress, selected}) => {
+const ScheduleItem = ({onPress, selected, title, subTitle, time}) => {
   return (
     <TouchableOpacity
       onPress={() => onPress()}
@@ -21,11 +20,11 @@ const ScheduleItem = ({shift, schedule, onPress, selected}) => {
         height: 78,
       }}>
       <Label variant="body2" color={selected ? 'purple-500' : 'gray-600'}>
-        Manhã
+        {title}
       </Label>
       <Separator width={4} />
       <Label variant="schedule" color={selected ? 'purple-500' : 'gray-600'}>
-        08:00
+        {subTitle}
       </Label>
     </TouchableOpacity>
   );

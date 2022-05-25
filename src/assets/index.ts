@@ -29,7 +29,10 @@ import LocalPoint from './icons/local-two.svg';
 import PhoneIcon from './icons/phone-icon.svg';
 import SuccessIcon from './icons/success.svg';
 
+import PerfumerBottle from './icons/perfumer-bottle.svg';
+
 export const Icons = {
+  'perfumer-bottle': PerfumerBottle,
   'success-icon': SuccessIcon,
   'phone-icon': PhoneIcon,
   'alarm-clock': AlarmLock,

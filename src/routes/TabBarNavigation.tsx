@@ -6,8 +6,9 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import TabBarIcon from '../components/atoms/TabBottomIconNavigation';
 
 import Dashboard from '../screens/Dashboard';
-import PurchasePass from '../screens/PurchasePass';
 import SignOut from '../screens/SignOut';
+
+import AppointmentHistory from '../screens/AppointmentHistory';
 
 const Tab = createBottomTabNavigator();
 
@@ -21,8 +22,10 @@ const TabBarNavigation = () => {
         headerShown: false,
         tabBarShowLabel: false,
         tabBarStyle: {
-          height: 64,
-          backgroundColor: '#EBE8ED',
+          height: 66,
+          backgroundColor: '#F4F2F5',
+          borderTopColor: '#EBE8ED',
+          borderTopWidth: 1,
         },
       }}>
       <Tab.Screen
@@ -34,10 +37,10 @@ const TabBarNavigation = () => {
       />
 
       <Tab.Screen
-        name="Recarga"
-        component={PurchasePass}
+        name="Agenda"
+        component={AppointmentHistory}
         options={{
-          tabBarIcon: () => <TabBarIcon icon="history-icon" label="recarga" />,
+          tabBarIcon: () => <TabBarIcon icon="time-icon" label="Agenda" />,
         }}
       />
 

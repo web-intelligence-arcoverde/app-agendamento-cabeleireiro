@@ -15,6 +15,8 @@ import Details from '../screens/Details';
 import Schedule from '../screens/Schedule';
 import SuccessCreateSchedule from '../screens/SuccessCreateSchedule';
 
+import ClientDetails from '../screens/ClientDetails';
+
 import DashboardTabBarNavigation from './TabBarNavigation';
 
 import {openModalSignOut} from '../store/modules/navigation/actions';
@@ -42,6 +44,8 @@ const App = () => {
 
         <Stack.Screen name="Details" component={Details} />
         <Stack.Screen name="Schedule" component={Schedule} />
+
+        <Stack.Screen name="ClientDetails" component={ClientDetails} />
 
         <Stack.Screen
           name="SuccessCreateSchedule"

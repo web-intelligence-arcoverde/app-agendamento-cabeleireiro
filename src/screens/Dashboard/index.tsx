@@ -17,7 +17,7 @@ const Home = ({navigation}: any) => {
       <Separator width={2} />
 
       <Label color="gray-500" variant="body1">
-        Separamos alguns salões para você cuidar da sua beleza
+        Separamos alguns estabelecimentos para você cuidar da sua beleza
       </Label>
 
       <Separator width={8} />

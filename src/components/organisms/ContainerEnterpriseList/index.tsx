@@ -6,6 +6,8 @@ import Separator from '../../atoms/Separator';
 
 import {DATA} from '../../../mocks';
 
+import {View} from 'react-native';
+
 const ContainerListEnterprises = ({navigation}) => {
   return (
     <ScrollView
@@ -22,7 +24,15 @@ const ContainerListEnterprises = ({navigation}) => {
               key={item.id}
               navigation={navigation}
             />
-            <Separator width={12} />
+            <View
+              style={{
+                height: 1,
+                borderWidth: 1,
+                borderColor: '#EBE8ED',
+                marginTop: 12,
+                marginBottom: 12,
+              }}
+            />
           </>
         );
       })}

@@ -3,10 +3,10 @@ import Icon from '../../atoms/Icon';
 import {COLORS} from '../../../common';
 
 const paymentTypes = {
-  pending: {icon: 'pending-icon', color: COLORS['yellow-light']},
-  cancel: {icon: 'cancel-payment-icon', color: COLORS['red-light']},
+  pending: {icon: 'pending-icon', color: COLORS['gray-100']},
+  cancel: {icon: 'pending-icon', color: COLORS['red-light']},
   confirmation: {
-    icon: 'confirmation-payment-icon',
+    icon: 'pending-icon',
     color: COLORS['green-light'],
   },
 };
