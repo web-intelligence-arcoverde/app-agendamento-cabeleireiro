@@ -19,6 +19,8 @@ import ClientDetails from '../screens/ClientDetails';
 
 import DashboardTabBarNavigation from './TabBarNavigation';
 
+import DetailsAppointment from '../screens/AppointmentDetails';
+
 import {openModalSignOut} from '../store/modules/navigation/actions';
 import {useDispatch} from 'react-redux';
 
@@ -46,6 +48,8 @@ const App = () => {
         <Stack.Screen name="Schedule" component={Schedule} />
 
         <Stack.Screen name="ClientDetails" component={ClientDetails} />
+
+        <Stack.Screen name="AppointmentDetail" component={DetailsAppointment} />
 
         <Stack.Screen
           name="SuccessCreateSchedule"

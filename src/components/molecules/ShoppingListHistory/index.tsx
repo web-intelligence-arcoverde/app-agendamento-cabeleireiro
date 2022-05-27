@@ -5,11 +5,15 @@ import CardItemHistoryPayment from '../CardItemHistoryPayment';
 
 import {historyPaymentsMock} from '../../../mocks/';
 
-const ShoppingListHistory = () => {
+const ShoppingListHistory = ({navigation}) => {
   const ListPaymentsHistory = historyPaymentsMock.map(item => {
     return (
       <>
-        <CardItemHistoryPayment item={item} key={item.date} />
+        <CardItemHistoryPayment
+          item={item}
+          key={item.date}
+          navigation={navigation}
+        />
         <View style={{padding: 4}} />
       </>
     );

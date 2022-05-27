@@ -14,7 +14,6 @@ import {closeModalSignOut} from '../../store/modules/navigation/actions';
 import Separator from '../../components/atoms/Separator';
 
 export default function SignOut({navigation}) {
-  console.log(navigation);
   const signOutVisible = useSelector(
     state => state.navigation.visible_modal_leave,
   );

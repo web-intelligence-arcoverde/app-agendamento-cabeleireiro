@@ -14,7 +14,8 @@ const statusPayment = [
 ];
 
 const HeaderPurchasesHistory = () => {
-  const [selectedValue, setSelectedValue] = useState('mais recentes');
+  const [selectedValue, setSelectedValue] = useState('hoje');
+  const [countAppointments, setCountAppointments] = useState(10);
 
   const ListStatusOrders = statusPayment.map(status => {
     return <Picker.Item label={status.label} value={status.value} />;
@@ -22,7 +23,7 @@ const HeaderPurchasesHistory = () => {
   return (
     <StyledContainer direction="row" align="flex-end" justify="space-between">
       <Label color="gray-200" variant="body1">
-        40 transações
+        {countAppointments} agendamentos
       </Label>
       <Picker
         selectedValue={selectedValue}
