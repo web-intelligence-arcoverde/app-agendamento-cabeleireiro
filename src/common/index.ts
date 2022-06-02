@@ -1,8 +1,11 @@
 export const COLORS = {
+  'white-default': '#FFFFFF',
   'white-100': '#FBFAFC',
   'white-200': '#F4F2F5',
   'white-300': '#EBE8ED',
   'white-400': '#E5E5E5',
+
+  'orange-100': '#F19403',
 
   'gray-100': '#C6C0CC',
   'gray-200': '#9A959E',
@@ -33,6 +36,13 @@ export const COLORS = {
 };
 
 export const Typography = {
+  title: {
+    fontSize: '52px',
+    fontWight: 700,
+    lineHeight: '61.6px',
+    fontFamily: 'DMSans-Regular',
+  },
+
   h1: {
     fontSize: '32px',
     fontWight: 700,

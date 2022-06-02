@@ -43,46 +43,50 @@ const SignIn = ({navigation}: any) => {
   }, [register]);
 
   return (
-    <Container justify="center" align="center" padding={30}>
-      <Label color="purple-800">2Beauty</Label>
+    <Container justify="center" align="center" padding={22}>
+      <Label color="orange-100" variant="title">
+        Beauty Hair
+      </Label>
 
       <View style={{padding: 26}} />
 
       <TextInput
-        label="Usuario"
+        placeholder="Email"
+        color="#736F75"
         onChangeText={text => setValue('cpf', text)}
         error={errors?.cpf}
       />
 
-      <View style={{padding: 4}} />
+      <View style={{padding: 12}} />
 
       <TextInput
-        label="Senha"
+        placeholder="Senha"
+        color="#736F75"
         secureTextEntry={true}
         onChangeText={text => setValue('password', text)}
         error={errors?.password}
       />
 
-      <View style={{padding: 4}} />
+      <View style={{padding: 12}} />
 
-      <StyledContainer align="flex-end">
+      <Button onPress={() => navigation.navigate('Dashboard')}>Entrar</Button>
+
+      <View style={{padding: 12}} />
+
+      <StyledContainer align="center">
         <ButtonText
-          onPress={() => navigation.navigate('Recovery')}
-          color="gray-300">
+          onPress={() => navigation.navigate('RecoveryAccount')}
+          color="orange-100">
           Esqueceu a senha?
         </ButtonText>
       </StyledContainer>
 
-      <View style={{padding: 8}} />
-
-      <Button onPress={() => navigation.navigate('Dashboard')}>Entrar</Button>
-
-      <View style={{padding: 8}} />
+      <View style={{padding: 12}} />
 
       <ContainerAccountQuestion
         navigation={navigation}
-        question="Já possui uma conta?"
-        text="Faça login"
+        question="Não tem conta?"
+        text=" Inscrever-se"
         router="SignUpStep1"
       />
     </Container>

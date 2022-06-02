@@ -1,29 +1,44 @@
 import React from 'react';
 
 import Label from '../../components/atoms/Label';
-import {Container} from '../../components/atoms/Container';
-import ButtonContained from '../../components/atoms/Button/Contained';
-import ButtonOutiline from '../../components/atoms/Button/Outiline';
 
 import Separator from '../../components/atoms/Separator';
 
+import {View, ImageBackground} from 'react-native';
+
+const image = {uri: 'https://reactjs.org/logo-og.png'};
+import HairBackground from '../../assets/images/hair-splash.jpeg';
+
 const Splash = ({navigation}: any) => {
+  const myTimeout = setTimeout(goNextRouter, 3000);
+
+  function goNextRouter() {
+    navigation.navigate('IntroSteps');
+  }
+
   return (
-    <Container justify="center" align="center" padding={24}>
-      <Label color="purble-900">2Beauty</Label>
-      <Separator width={12} />
-      <Label color="gray-300" variant="body1">
-        Agende seu horário de qualquer lugar
-      </Label>
-      <Separator width={112} />
-      <ButtonContained onPress={() => navigation.navigate('SignUpStep1')}>
-        Criar conta
-      </ButtonContained>
-      <Separator width={12} />
-      <ButtonOutiline onPress={() => navigation.navigate('SignIn')}>
-        Fazer login
-      </ButtonOutiline>
-    </Container>
+    <View style={{flex: 1, display: 'flex'}}>
+      <ImageBackground
+        source={HairBackground}
+        resizeMode="cover"
+        style={{
+          flex: 1,
+          display: 'flex',
+          justifyContent: 'flex-end',
+          padding: 22,
+        }}>
+        <Label>Bem vindo ao</Label>
+        <Separator width={8} />
+        <Label color="orange-100" variant="title">
+          Beauty Hair
+        </Label>
+        <Separator width={8} />
+        <Label variant="body1">
+          o melhor aplicativo de barbeiro e salão neste século sua boa aparência
+          e beleza
+        </Label>
+      </ImageBackground>
+    </View>
   );
 };
 

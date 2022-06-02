@@ -30,7 +30,6 @@ const Index = ({
 
   return (
     <Container>
-      <Label>{label}</Label>
       <InputContainer
         borderColor={secureTextEntry && borderColor}
         borderWidth={secureTextEntry && borderWidth}>
@@ -39,6 +38,7 @@ const Index = ({
             placeholderTextColor={color}
             placeholder={text}
             type={type}
+            placeholderTextColor="#000"
             secureTextEntry={
               !visiblePasswordText ? visiblePasswordText : secureTextEntry
             }

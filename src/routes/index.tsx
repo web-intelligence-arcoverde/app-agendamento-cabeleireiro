@@ -24,6 +24,8 @@ import DetailsAppointment from '../screens/AppointmentDetails';
 import {openModalSignOut} from '../store/modules/navigation/actions';
 import {useDispatch} from 'react-redux';
 
+import Intro from '../screens/Intro';
+
 const Stack = createNativeStackNavigator();
 
 const App = () => {
@@ -37,6 +39,7 @@ const App = () => {
           headerShown: false,
         }}>
         <Stack.Screen name="Splash" component={Splash} />
+        <Stack.Screen name="IntroSteps" component={Intro} />
         <Stack.Screen name="SignIn" component={SignIn} />
 
         <Stack.Screen name="SignUpStep1" component={SignUpStep1} />

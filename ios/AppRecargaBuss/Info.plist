@@ -51,5 +51,15 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Epilogue-Bold.ttf</string>
+		<string>Epilogue-ExtraBold.ttf</string>
+		<string>Epilogue-ExtraLight.ttf</string>
+		<string>Epilogue-Light.ttf</string>
+		<string>Epilogue-Medium.ttf</string>
+		<string>Epilogue-Regular.ttf</string>
+		<string>Epilogue-SemiBold.ttf</string>
+	</array>
 </dict>
 </plist>

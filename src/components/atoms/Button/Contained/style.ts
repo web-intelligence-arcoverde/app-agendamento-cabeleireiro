@@ -9,10 +9,10 @@ export const Button = styled.TouchableOpacity<PropsButton>`
   width: 100%;
   height: 52px;
   background-color: ${({background}) =>
-    background ? `${COLORS[background]}` : `${COLORS['purple-500']}`};
+    background ? `${COLORS[background]}` : `${COLORS['orange-100']}`};
   justify-content: center;
   align-items: center;
-  border-radius: 8px;
+  border-radius: 28px;
 `;
 
 export const ButtonText = styled.Text`

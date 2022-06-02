@@ -5,11 +5,11 @@ import {Label} from './style';
 
 interface LabelProps {}
 
-export default function ({variant, color, children}: any) {
+export default function ({variant, color, children, textAlign}: any) {
   const style = Typography[variant ? variant : 'h1'];
 
   return (
-    <Label {...style} color={color}>
+    <Label {...style} color={color} textAlign={textAlign}>
       {children}
     </Label>
   );
