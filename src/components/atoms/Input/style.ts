@@ -26,7 +26,7 @@ export const InputContainer = styled.View`
   align-items: center;
   width: 100%;
   height: 52px;
-  background: ${COLORS['white-100']};
+  background: ${COLORS['gray-default']};
 
   border-color: ${({borderColor}) =>
     borderColor ? `${COLORS[borderColor]}` : `transparent`};
@@ -34,8 +34,9 @@ export const InputContainer = styled.View`
   border-width: ${({borderWidth}) =>
     borderWidth ? `${borderWidth}px` : `1px`};
 
-  border-radius: 6px;
+  border-radius: 12px;
   padding: 18px;
+  padding-right: 32px;
 `;
 
 export const Input = styled.TextInput`

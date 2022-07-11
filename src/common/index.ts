@@ -7,6 +7,7 @@ export const COLORS = {
 
   'orange-100': '#F19403',
 
+  'gray-default': '#F2F2F2',
   'gray-100': '#C6C0CC',
   'gray-200': '#9A959E',
   'gray-300': '#736F75',

@@ -3,6 +3,8 @@ import {Input, Container, TextError, Label, InputContainer} from './style';
 
 import Icon from '../../atoms/Button/Icon';
 
+import ContainerIcon from '../Icon';
+
 import MaskInput from '../MaskInput';
 
 const Index = ({
@@ -13,6 +15,8 @@ const Index = ({
   color,
   type,
   mask,
+  icon,
+  placeholder,
   ...inputProps
 }: any) => {
   const [visiblePasswordText, setVisiblePasswordText] = useState(true);
@@ -33,12 +37,13 @@ const Index = ({
       <InputContainer
         borderColor={secureTextEntry && borderColor}
         borderWidth={secureTextEntry && borderWidth}>
+        <ContainerIcon icon={icon} />
         {mask ? (
           <MaskInput
             placeholderTextColor={color}
             placeholder={text}
             type={type}
-            placeholderTextColor="#000"
+            placeholder={placeholder}
             secureTextEntry={
               !visiblePasswordText ? visiblePasswordText : secureTextEntry
             }
@@ -47,7 +52,7 @@ const Index = ({
         ) : (
           <Input
             placeholderTextColor={color}
-            placeholder={text}
+            placeholder={placeholder}
             secureTextEntry={
               !visiblePasswordText ? visiblePasswordText : secureTextEntry
             }

@@ -10,6 +10,7 @@ import Select from '../../../components/atoms/Select';
 import Separator from '../../../components/atoms/Separator';
 
 const usersTypes = [
+  {label: '', value: ''},
   {label: 'Cliente', value: 'cliente'},
   {label: 'Empresa', value: 'empresa'},
 ];
@@ -26,7 +27,7 @@ const SelecteUserType = ({navigation}) => {
           onPress={() => navigation.goBack()}
         />
         <Separator width={12} />
-        <Label color="purple-800">Criar conta</Label>
+        <Label color="orange-100">Criar conta</Label>
       </StyledContainer>
 
       <Separator width={22} />
@@ -52,7 +53,7 @@ const SelecteUserType = ({navigation}) => {
         Proximo
       </Button>
 
-      <Separator width={48} />
+      <Separator width={28} />
 
       <ContainerAccountQuestion
         navigation={navigation}

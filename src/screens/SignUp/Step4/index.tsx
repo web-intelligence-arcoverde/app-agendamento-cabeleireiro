@@ -51,15 +51,19 @@ const ScheduleInformation = ({navigation, route}) => {
   const dispatch = useDispatch();
 
   return (
-    <ScrollView>
+    <ScrollView style={{flex: 1, backgroundColor: '#fff'}}>
       <Container align="center" padding={24}>
         <StyledContainer>
-          <Label color="purple-800">Endereço do estabelecimento</Label>
+          <Label color="orange-100">Endereço do estabelecimento</Label>
+          <Label color="gray-300" variant="body1">
+            Informe o endereço do seu estabelecimento
+          </Label>
         </StyledContainer>
 
         <Separator width={18} />
 
         <TextInput
+          icon="lock-icon"
           label="CEP"
           placeholder="Ex: Barbearia Alves"
           onChangeText={text => setValue('name', text)}
@@ -69,6 +73,7 @@ const ScheduleInformation = ({navigation, route}) => {
         <Separator width={8} />
 
         <TextInput
+          icon="lock-icon"
           label="Cidade"
           placeholder="Ex: xx.xxx.xxx/xxxx-xx"
           onChangeText={text => setValue('cpf', text)}
@@ -78,6 +83,7 @@ const ScheduleInformation = ({navigation, route}) => {
         <Separator width={8} />
 
         <TextInput
+          icon="lock-icon"
           label="Bairro"
           placeholder="Ex: xx.xxx.xxx/xxxx-xx"
           onChangeText={text => setValue('cpf', text)}
@@ -87,6 +93,7 @@ const ScheduleInformation = ({navigation, route}) => {
         <Separator width={8} />
 
         <TextInput
+          icon="lock-icon"
           label="Rua"
           placeholder="Ex: (86)9995028103"
           onChangeText={text => setValue('password', text)}
@@ -96,6 +103,7 @@ const ScheduleInformation = ({navigation, route}) => {
         <Separator width={8} />
 
         <TextInput
+          icon="lock-icon"
           label="Numero"
           placeholder="Ex: (86)9995028103"
           onChangeText={text => setValue('password', text)}

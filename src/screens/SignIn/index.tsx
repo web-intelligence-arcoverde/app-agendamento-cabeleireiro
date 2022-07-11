@@ -6,7 +6,7 @@ import {Container, StyledContainer} from '../../components/atoms/Container';
 import Button from '../../components/atoms/Button/Contained';
 import ButtonText from '../../components/atoms/Button/Text';
 import TextInput from '../../components/atoms/Input';
-import {View} from 'react-native';
+import {TouchableOpacity, View} from 'react-native';
 
 import * as yup from 'yup';
 
@@ -14,6 +14,8 @@ import {yupResolver} from '@hookform/resolvers/yup';
 import {useForm} from 'react-hook-form';
 
 import ContainerAccountQuestion from '../../components/molecules/ContainerQuestionAccount';
+import IconButton from '../../components/atoms/Button/Icon';
+import Icon from '../../components/atoms/Icon';
 
 const schema = yup
   .object({
@@ -43,23 +45,21 @@ const SignIn = ({navigation}: any) => {
   }, [register]);
 
   return (
-    <Container justify="center" align="center" padding={22}>
+    <Container justify="center" padding={22}>
       <Label color="orange-100" variant="title">
-        Beauty Hair
+        Faça login na sua conta
       </Label>
 
-      <View style={{padding: 26}} />
-
       <TextInput
+        icon="email-icon"
         placeholder="Email"
         color="#736F75"
         onChangeText={text => setValue('cpf', text)}
         error={errors?.cpf}
       />
 
-      <View style={{padding: 12}} />
-
       <TextInput
+        icon="lock-icon"
         placeholder="Senha"
         color="#736F75"
         secureTextEntry={true}
@@ -67,11 +67,7 @@ const SignIn = ({navigation}: any) => {
         error={errors?.password}
       />
 
-      <View style={{padding: 12}} />
-
       <Button onPress={() => navigation.navigate('Dashboard')}>Entrar</Button>
-
-      <View style={{padding: 12}} />
 
       <StyledContainer align="center">
         <ButtonText
@@ -81,7 +77,17 @@ const SignIn = ({navigation}: any) => {
         </ButtonText>
       </StyledContainer>
 
-      <View style={{padding: 12}} />
+      <StyledContainer justify="center" align="center">
+        <Label color="gray-300" variant="h3">
+          ou continue com
+        </Label>
+      </StyledContainer>
+
+      <StyledContainer direction="row" justify="space-evenly">
+        <SocialButton icon="google-icon" />
+        <SocialButton icon="facebook-icon" />
+        <SocialButton icon="apple-icon" />
+      </StyledContainer>
 
       <ContainerAccountQuestion
         navigation={navigation}
@@ -90,6 +96,21 @@ const SignIn = ({navigation}: any) => {
         router="SignUpStep1"
       />
     </Container>
+  );
+};
+
+const SocialButton = ({icon}) => {
+  return (
+    <TouchableOpacity
+      onPress={() => {}}
+      style={{
+        padding: 12,
+        borderWidth: 1,
+        borderRadius: 12,
+        borderColor: '#F2F2F2',
+      }}>
+      <Icon icon={icon} width={28} height={28} />
+    </TouchableOpacity>
   );
 };
 

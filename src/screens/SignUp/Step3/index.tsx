@@ -47,7 +47,7 @@ const IntroEnterpriseInformation = ({navigation, route}) => {
   return (
     <Container align="center" padding={24} justify="center">
       <StyledContainer>
-        <Label color="purple-800">Vamos criar seu negócio</Label>
+        <Label color="orange-100">Vamos criar seu negócio</Label>
         <Separator width={4} />
         <Label color="gray-300" variant="body1">
           Precisaremos de alguns dados do estabelecimento.
@@ -57,6 +57,7 @@ const IntroEnterpriseInformation = ({navigation, route}) => {
       <Separator width={22} />
 
       <TextInput
+        icon="lock-icon"
         label="Nome da sua empresa"
         placeholder="Ex: Barbearia Alves"
         onChangeText={text => setValue('name', text)}
@@ -66,6 +67,7 @@ const IntroEnterpriseInformation = ({navigation, route}) => {
       <Separator width={8} />
 
       <TextInput
+        icon="lock-icon"
         label="CNPJ"
         placeholder="Ex: xx.xxx.xxx/xxxx-xx"
         onChangeText={text => setValue('cpf', text)}
@@ -75,6 +77,7 @@ const IntroEnterpriseInformation = ({navigation, route}) => {
       <Separator width={8} />
 
       <TextInput
+        icon="lock-icon"
         label="Telefone"
         placeholder="Ex: (86)9995028103"
         onChangeText={text => setValue('password', text)}

@@ -31,6 +31,13 @@ import SuccessIcon from './icons/success.svg';
 
 import PerfumerBottle from './icons/perfumer-bottle.svg';
 
+import EmailGray from './icons/email-gray.svg';
+import LockIcon from './icons/lock.svg';
+
+import GoogleIcon from './icons/google.svg';
+import FacebookIcon from './icons/facebook.svg';
+import AppleIcon from './icons/apple.svg';
+
 export const Icons = {
   'perfumer-bottle': PerfumerBottle,
   'success-icon': SuccessIcon,
@@ -58,4 +65,10 @@ export const Icons = {
   'cancel-payment-icon': CancelPayment,
   'confirmation-payment-icon': Confirmation,
   'credit-card-icon': CreditCard,
+  'email-icon': EmailGray,
+  'lock-icon': LockIcon,
+
+  'google-icon': GoogleIcon,
+  'facebook-icon': FacebookIcon,
+  'apple-icon': AppleIcon,
 };

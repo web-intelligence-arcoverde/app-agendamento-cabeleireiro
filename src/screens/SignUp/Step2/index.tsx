@@ -33,6 +33,8 @@ const BasicInformationsUser = ({navigation, route}: any) => {
 
   const {userType} = route.params;
 
+  console.log(userType);
+
   const selectedUserType = ({data}) => {
     if (userType === 'empresa') {
       navigation.navigate('SignUpStep3', {data, userType});
@@ -42,53 +44,52 @@ const BasicInformationsUser = ({navigation, route}: any) => {
   };
 
   return (
-    <Container padding={24} justify="center">
-      <StyledContainer direction="row" align="center">
-        <IconButton
-          height={21}
-          icon="arrow-left-green"
-          onPress={() => navigation.goBack()}
-        />
-        <Separator width={12} />
-        <Label color="purple-800">Informações básicas</Label>
+    <Container padding={24}>
+      <StyledContainer>
+        <Label color="orange-100">Informações básicas</Label>
       </StyledContainer>
 
-      <Separator width={22} />
-
       <TextInput
-        label="Usuário"
-        placeholder="Ex: marcosmacedo"
-        onChangeText={text => setValue('name', text)}
-      />
-
-      <Separator width={10} />
-
-      <TextInput
+        icon="email-icon"
         label="Email"
-        placeholder="Ex: marcos@gmail.com"
+        placeholder="Informe seu nome"
         onChangeText={text => setValue('cpf', text)}
       />
 
-      <Separator width={10} />
+      <TextInput
+        icon="lock-icon"
+        placeholder="Telefone"
+        onChangeText={text => setValue('passwordConfirmation', text)}
+        mask
+        type="cel-phone"
+      />
 
       <TextInput
+        icon="email-icon"
+        label="Email"
+        placeholder="Informe seu email"
+        onChangeText={text => setValue('cpf', text)}
+      />
+
+      <TextInput
+        icon="lock-icon"
         label="Senha"
         placeholder="Informe sua senha"
         secureTextEntry={true}
         onChangeText={text => setValue('password', text)}
       />
 
-      <Separator width={10} />
       <TextInput
+        icon="lock-icon"
         label="Confirme a senha"
         placeholder="Confirme sua senha "
         secureTextEntry={true}
         onChangeText={text => setValue('passwordConfirmation', text)}
       />
 
-      <Separator width={20} />
-
-      <Button name="Exemple" onPress={() => navigation.navigate('SignUpStep3')}>
+      <Button
+        name="Exemple"
+        onPress={handleSubmit(data => selectedUserType(data))}>
         {userType === 'cliente' ? 'Criar conta' : 'Proximo'}
       </Button>
     </Container>
